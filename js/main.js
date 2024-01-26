@@ -80,10 +80,21 @@ setInterval(() => {
 }, 3000);
 
 
-// move obstacles
+// move obstacles & detect collision
 setInterval(() => {
     obstacles.forEach((obstacleInstance) => {
+
+        // 1. move current obstacle
         obstacleInstance.moveDown();
+        
+        // 2. detect if there's a collision between the current obstacle and the player
+        if (player.positionX < obstacleInstance.positionX + obstacleInstance.width &&
+            player.positionX + player.width > obstacleInstance.positionX &&
+            player.positionY < obstacleInstance.positionY + obstacleInstance.height &&
+            player.positionY + player.height > obstacleInstance.positionY) {
+            console.log("game over");
+            location.href = "gameover.html";
+        }
     });
 }, 30);
 
