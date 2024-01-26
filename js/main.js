@@ -1,9 +1,9 @@
 class Player {
     constructor(){
+        this.width = 20;
+        this.height = 10;
         this.positionX = 50;
         this.positionY = 0;
-        this.width = 20;
-        this.height = 20;
         this.domElm = null;
 
         this.createDomElement();
@@ -37,10 +37,10 @@ class Player {
 
 class Obstacle {
     constructor(){
-        this.positionX = 50;
-        this.positionY = 100;
         this.width = 20;
-        this.height = 20;
+        this.height = 10;
+        this.positionX = Math.floor(Math.random() * (100 - this.width + 1)); // random number between 0 and (100 - this.width)
+        this.positionY = 100;
         this.domElm = null;
 
         this.createDomElement();
@@ -61,7 +61,7 @@ class Obstacle {
         boardElm.appendChild(this.domElm);
     }
     moveDown(){
-        this.positionY = this.positionY - 10;
+        this.positionY--;
         this.domElm.style.bottom = this.positionY + "vh"; 
     }
 }
@@ -70,12 +70,22 @@ class Obstacle {
 
 
 const player = new Player();
+const obstacles = []; // will strore instances of the class Obstacle
 
-const newObstacle = new Obstacle();
 
+// generate obstacles 
 setInterval(() => {
-    newObstacle.moveDown();
-}, 500);
+    const newObstacle = new Obstacle();
+    obstacles.push(newObstacle);
+}, 3000);
+
+
+// move obstacles
+setInterval(() => {
+    obstacles.forEach((obstacleInstance) => {
+        obstacleInstance.moveDown();
+    });
+}, 30);
 
 
 
