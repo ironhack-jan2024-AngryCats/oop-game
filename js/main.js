@@ -23,13 +23,17 @@ class Player {
         const boardElm = document.getElementById("board");
         boardElm.appendChild(this.domElm);
     }
-    moveLeft(){
-        this.positionX--;
-        this.domElm.style.left = this.positionX + "vw";
+    moveLeft() {
+        if (this.positionX > 0) {
+            this.positionX--;
+            this.domElm.style.left = this.positionX + "vw";
+        }
     }
-    moveRight(){
-        this.positionX++;
-        this.domElm.style.left = this.positionX + "vw";
+    moveRight() {
+        if (this.positionX + this.width < 100) {
+            this.positionX++;
+            this.domElm.style.left = this.positionX + "vw";
+        }
     }
 }
 
@@ -95,6 +99,7 @@ setInterval(() => {
             console.log("game over");
             location.href = "gameover.html";
         }
+
     });
 }, 30);
 
