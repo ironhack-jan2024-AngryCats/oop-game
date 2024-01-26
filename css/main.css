@@ -7,4 +7,10 @@ body {
 #board {
     background-color: rgb(137, 209, 235);
     height: 100vh;
+    position: relative;
+}
+
+#player {
+    background-color: rgb(255, 0, 166);
+    position: absolute;
 }
