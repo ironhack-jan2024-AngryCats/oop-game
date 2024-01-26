@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+#board {
+    background-color: rgb(137, 209, 235);
+    height: 100vh;
+}
